@@ -1,13 +1,15 @@
 {
   "name": "ts-bp",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "fmt": "prettier --write **/*.{js,ts,json} ",
     "start": "npm run build && npm run watch",
-    "build": "npm run build-ts && npm run tslint",
+    "bundle": "npm run fmt && npm run tslint && npm run build-ts",
     "serve": "node dist/server.js",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\"  \"npm run watch-ts\" \"nodemon dist/index.js\"",
+    "watch":
+      "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\"  \"npm run watch-ts\" \"nodemon dist/index.js\"",
     "test": "jest --forceExit",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
@@ -17,7 +19,8 @@
   "license": "ISC",
   "dependencies": {
     "chai": "^3.5.0",
-    "concurrently": "^3.4.0"
+    "concurrently": "^3.4.0",
+    "prettier": "^1.10.2"
   },
   "devDependencies": {
     "@types/chai": "^3.5.2",
@@ -36,16 +39,11 @@
     "globals": {
       "__TS_CONFIG__": "tsconfig.json"
     },
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
+    "moduleFileExtensions": ["ts", "js"],
     "transform": {
       "^.+\\.(ts)$": "./node_modules/ts-jest/preprocessor.js"
     },
-    "testMatch": [
-      "**/test/**/*.test.(ts|js)"
-    ],
+    "testMatch": ["**/test/**/*.test.(ts|js)"],
     "testEnvironment": "node"
   }
 }

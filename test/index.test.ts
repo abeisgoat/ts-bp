@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import * as pkg from "../src/";
+import "mocha";
 
 describe("package", () => {
   it("should return 'A promise!'", async () => {

@@ -1,3 +1,3 @@
-export function Perform(text: string): Promise<string> {
-  return Promise.resolve(`A {text} promise!`);
+export async function Perform(text: string): Promise<string> {
+  return `A ${text} promise!`;
 }
